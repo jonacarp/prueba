@@ -1,0 +1,195 @@
+[3986677]{234931}[-1/-1] 2025-06-23 11:12:11.129503 e SQLSession       sm_codec_newdb.cc(08861) : failed to encode itab result sets: ERROR [SQL-139] current operation cancelled by request and transaction rolled back: session canceled during fetch at ptime/session/eapi/jdbc/ResultSet.cc:2996
+exception  1: no.71000139  (ptime/session/eapi/jdbc/ResultSet.cc:2996) TID: 3986677
+    session canceled during fetch
+NO exception throw location recorded. Stack generation suppressed.
+exception type information:
+ - 0: public ptime::SQLException@0x00007fffac546e30 SI
+   - 0: public ptime::SQLExceptionBase@0x00007fffac545b98 SI
+     - 0: public Diagnose::UserFacingExceptionBase@0x00007fffac5440e8 SI
+       - 0: public ltt::exception@0x00007fff83f7f340
+[2203167]{236293}[-1/-1] 2025-06-23 11:12:13.754369 e SQLSession       sm_handler.cc(02966) : (sockfd:2085, channel:0x000fff03666e9700, event:0x000ffe5ec1b7fb80, part:163) communication error: SSL exception  1: no.2110005  (Basis/IO/Stream/impl/NetworkChannel.cpp:1409) TID: 2203167
+    Error during stream send: NetworkChannel::send. Socket state not valid, rc=$sysrc$: $sysmsg$; $Context$=[1d2a899301c3b239,10.2.2.50:30015,10.2.2.55:43414,SES,0]; $channel$={<NetworkChannelSSLFilter>={<NetworkChannelBase>={this=4499384784764952, fd=INVALID, refCnt=1, local=10.2.2.50/30015_tcp, remote=10.2.2.55/43414_tcp, state=Closed, pending=[----]}}}
+exception throw location:
+   0: 0x00007fff84a1ee38 in Stream::NetworkChannel::doSend(void const*, unsigned long)+0x7a8 at Basis/IO/Stream/impl/NetworkChannel.cpp:1409 (libhdbbasis.so)
+   1: 0x00007fff690292b0 in SessionLayer::TcpChannel::send(char const*, unsigned long)+0x50 at api/Communication/Raw/NetworkChannelStream.hpp:91 (libhdbsessionlayer.so)
+   2: 0x00007fffa5fdeb34 in ptime::SessionHandler::sendMessage(Execution::Context&, SessionLayer::SessionEvent*)+0x534 at ptime/session/sm_handler.cc:2917 (libhdbsqlsession.so)
+   3: 0x00007fffa5fcfd0c in ptime::SessionHandler::doSendMessage_(ptime::ThreadStatusCallbackBase&, ptime::CommEventObjects&, SessionLayer::CommEvent::EventType)+0xac at ptime/session/sm_handler.cc:1650 (libhdbsqlsession.so)
+   4: 0x00007fffa5fd4dd0 in ptime::SessionHandler::receiveMessage_(Execution::Context&, ptime::ThreadStatusCallbackBase&, SessionLayer::CommEvent*, bool)+0x950 at ptime/session/sm_handler.cc:2027 (libhdbsqlsession.so)
+   5: 0x00007fffa5fd58cc in ptime::SessionHandler::receiveMessage(Execution::Context&, SessionLayer::CommEvent*, bool)+0x3c at ptime/session/sm_handler.cc:1853 (libhdbsqlsession.so)
+   6: 0x00007fffa6022518 in ptime::TcpReceiver::doWork(Execution::Context&, SessionLayer::CommMgr*)+0xef8 at ptime/session/tcp_receiver.cc:392 (libhdbsqlsession.so)
+   7: 0x00007fffa601d68c in ptime::TcpReceiver::runInner(void*)+0x15c at ptime/session/tcp_receiver.cc:503 (libhdbsqlsession.so)
+   8: 0x00007fffa601de98 in non-virtual thunk to ptime::TcpReceiver::run(void*)+0x58 at ptime/session/tcp_receiver.cc:480 (libhdbsqlsession.so)
+   9: 0x00007fff88f7cc20 in TrexThreads::PoolThread::run()+0x1460 at TrexThreads/PoolThread.cpp:437 (libhdbbasement.so)
+  10: 0x00007fff88f6bc48 in TrexThreads::PoolThread::run(Execution::ThreadRC&)+0x28 at TrexThreads/PoolThread.cpp:121 (libhdbbasement.so)
+  11: 0x00007fff848ee51c in Execution::Thread::staticMainImp(Execution::Thread*)+0x64c at Basis/Execution/impl/Thread.cpp:612 (libhdbbasis.so)
+  12: 0x00007fff848f87f8 in Execution::pthreadFunctionWrapper(Execution::Thread*)+0x248 at Basis/Execution/impl/ThreadInterposition.cpp:684 (libhdbbasis.so)
+  13: 0x00007fff84069748 in start_thread+0xf8 (libpthread.so.0)
+exception type information:
+ - 0: public ltt::exception@0x00007fff83f7f340
+[2203167]{236293}[-1/-1] 2025-06-23 11:12:13.760135 e SQLSession       sm_handler.cc(03271) : ===== START OF SESSION DUMP ======================
+[2203167]{236293}[-1/-1] 2025-06-23 11:12:13.760145 e SQLSession       sm_handler.cc(03272) : CHANNEL      : (sockfd:2085, part:163) open_time=8063 ms, exp_size(header)=336, act_size(buffer)=0
+[2203167]{236293}[-1/-1] 2025-06-23 11:12:13.760152 e SQLSession       sm_handler.cc(03273) : ACTION       : name=ExecuteStatement, message_type=EXECUTEDIRECT, stocked_error_code=729, scrollable=0, oabap_stream=0
+[2203167]{236293}[-1/-1] 2025-06-23 11:12:13.760180 e SQLSession       sm_handler.cc(03274) : CLIENT       : janoappprd03[10.2.2.55]:43414(pid=39608), client_library=SQLDBC 2.8.16.1616182488, client_program=dw.sapPEJ_D00
+[2203167]{236293}[-1/-1] 2025-06-23 11:12:13.760187 e SQLSession       sm_handler.cc(03275) : PROTOCOL     : 4.1, internal_session_id=5515002514678411, packet_count(message_id)=0, version_exchanged=1, authenticated=1
+[2203167]{236293}[-1/-1] 2025-06-23 11:12:13.760190 e SQLSession       sm_handler.cc(03276) : DISTRIBUTION : mode=0, version=6
+[2203167]{236293}[-1/-1] 2025-06-23 11:12:13.760193 e SQLSession       sm_handler.cc(03277) : ROUTING      : anchor=236293, primary=236293, own=236293, update_tid=0, A/A_origin_site_type=0, A/A_origin_conn=0, A/A_protocol_version=2
+[2203167]{236293}[-1/-1] 2025-06-23 11:12:13.760197 e SQLSession       sm_handler.cc(03279) : ===== END OF SESSION DUMP ========================
+[2203167]{236293}[-1/-1] 2025-06-23 11:12:13.760243 e SQLSession       sm_handler.cc(01656) : (sockfd:2085, part:163, channel:0x000fff03666e9700, event:0x000ffe5ec1b7fb80) close channel while sending reply message
+[2156387]{-1}[-1/-1] 2025-06-23 11:12:16.311246 e SQLSession       sm_handler.cc(01313) : (sockfd:1686, part:132, channel:0x000fff595c870b00, event:0x000fe49b798ea0c0) was closed because consecutive requests detected (current state:1)
+[2156387]{-1}[-1/-1] 2025-06-23 11:12:16.311284 e SQLSession       sm_handler.cc(03271) : ===== START OF SESSION DUMP ======================
+[2156387]{-1}[-1/-1] 2025-06-23 11:12:16.311287 e SQLSession       sm_handler.cc(03272) : CHANNEL      : (sockfd:1686, part:132) open_time=347801 ms, exp_size(header)=792, act_size(buffer)=288
+[2156387]{-1}[-1/-1] 2025-06-23 11:12:16.311290 e SQLSession       sm_handler.cc(03273) : ACTION       : name=ExecQidItab, message_type=EXECUTE ITAB, stocked_error_code=0, scrollable=0, oabap_stream=1
+[2156387]{-1}[-1/-1] 2025-06-23 11:12:16.311298 e SQLSession       sm_handler.cc(03274) : CLIENT       : janoappprd02[10.2.2.54]:55712(pid=46125), client_library=SQLDBC 2.8.16.1616182488, client_program=ABAP:PEJ
+[2156387]{-1}[-1/-1] 2025-06-23 11:12:16.311303 e SQLSession       sm_handler.cc(03275) : PROTOCOL     : 4.1, internal_session_id=5462128810759317, packet_count(message_id)=517, version_exchanged=1, authenticated=1
+[2156387]{-1}[-1/-1] 2025-06-23 11:12:16.311305 e SQLSession       sm_handler.cc(03276) : DISTRIBUTION : mode=2, version=6
+[2156387]{-1}[-1/-1] 2025-06-23 11:12:16.311307 e SQLSession       sm_handler.cc(03277) : ROUTING      : anchor=231286, primary=231286, own=231286, update_tid=0, A/A_origin_site_type=0, A/A_origin_conn=0, A/A_protocol_version=2
+[2156387]{-1}[-1/-1] 2025-06-23 11:12:16.311444 e SQLSession       sm_handler.cc(03321) : (2156387:1686) received msg: 792 / 288
+!0x000fe83d3e1a6000: >95 94 7b f7 c6 67 13 00|06 02 00 00 00 01 00 00|e0 ff 1f 00 01 00 00 00|00 00 00 00 00 00 00 00 || ..{..g..........................
+.0x000fe83d3e1a6020:  00 01 00 00 00 00 00 00|02 00 01 00 01 44 00 00|00 00 00 00 00 00 00 00|27 00 01 00 00 00 00 00 || .............D..........'.......
+.0x000fe83d3e1a6040:  b0 00 00 00 b8 ff 1f 00|01 21 ac 00 01 00 00 00|00 00 00 00 d8 ed 70 03|01 00 00 00 52 ad d5 2d || .........!............p.....R..-
+.0x000fe83d3e1a6060:  01 00 00 00 69 a1 af fe|00 00 00 00 00 00 00 00|00 00 00 00 00 00 00 00|00 00 00 00 00 00 00 00 || ....i...........................
+.0x000fe83d3e1a6080:  00 00 00 00 00 00 00 00|00 00 00 00 00 00 00 00|00 00 00 00 00 00 00 00|00 00 00 00 00 00 00 00 || ................................
+.0x000fe83d3e1a60a0:  00 00 00 00 00 00 00 00|00 00 00 00 00 00 00 00|00 00 00 00 00 00 00 00|00 00 00 00 00 00 00 00 || ................................
+.0x000fe83d3e1a60c0:  00 00 00 00 00 a9 86 ff|ff ff 0f 00 00 00 00 00|00 00 00 00 00 00 00 00|00 00 40 b0 01 00 00 00 || ..........................@.....
+.0x000fe83d3e1a60e0:  00 00 00 00 00 00 00 00|00 00 00 00 af 9d c8 cd|64 c0 3c 00 60 10 80 fe|26 00 02 00 00 00 00 00 || ................d.<.`...&.......
+.0x000fe83d3e1a6100:  14 00 00 00 f8 fe 1f 00|00 04 0c 00 00 00 00 00|00 00 01 04 00 00 00 00|00 00 00 00 00 00 00 00 || ................................
+[2156387]{-1}[-1/-1] 2025-06-23 11:12:16.311456 e SQLSession       sm_handler.cc(03279) : ===== END OF SESSION DUMP ========================
+[2203172]{236334}[-1/-1] 2025-06-23 11:12:18.414423 e SQLSession       sm_handler.cc(02966) : (sockfd:1950, channel:0x000fec942d315100, event:0x000ffe6dbc2e8140, part:211) communication error: SSL exception  1: no.2110005  (Basis/IO/Stream/impl/NetworkChannel.cpp:1409) TID: 2203172
+    Error during stream send: NetworkChannel::send. Socket state not valid, rc=$sysrc$: $sysmsg$; $Context$=[1d2a899301c3b249,10.2.2.50:30015,10.2.2.49:28590,SES,0]; $channel$={<NetworkChannelSSLFilter>={<NetworkChannelBase>={this=4502644336774168, fd=INVALID, refCnt=1, local=10.2.2.50/30015_tcp, remote=10.2.2.49/28590_tcp, state=Closed, pending=[----]}}}
+exception throw location:
+   0: 0x00007fff84a1ee38 in Stream::NetworkChannel::doSend(void const*, unsigned long)+0x7a8 at Basis/IO/Stream/impl/NetworkChannel.cpp:1409 (libhdbbasis.so)
+   1: 0x00007fff690292b0 in SessionLayer::TcpChannel::send(char const*, unsigned long)+0x50 at api/Communication/Raw/NetworkChannelStream.hpp:91 (libhdbsessionlayer.so)
+   2: 0x00007fffa5fdeb34 in ptime::SessionHandler::sendMessage(Execution::Context&, SessionLayer::SessionEvent*)+0x534 at ptime/session/sm_handler.cc:2917 (libhdbsqlsession.so)
+   3: 0x00007fffa5fcfd0c in ptime::SessionHandler::doSendMessage_(ptime::ThreadStatusCallbackBase&, ptime::CommEventObjects&, SessionLayer::CommEvent::EventType)+0xac at ptime/session/sm_handler.cc:1650 (libhdbsqlsession.so)
+   4: 0x00007fffa5fd4dd0 in ptime::SessionHandler::receiveMessage_(Execution::Context&, ptime::ThreadStatusCallbackBase&, SessionLayer::CommEvent*, bool)+0x950 at ptime/session/sm_handler.cc:2027 (libhdbsqlsession.so)
+   5: 0x00007fffa5fd58cc in ptime::SessionHandler::receiveMessage(Execution::Context&, SessionLayer::CommEvent*, bool)+0x3c at ptime/session/sm_handler.cc:1853 (libhdbsqlsession.so)
+   6: 0x00007fffa6022518 in ptime::TcpReceiver::doWork(Execution::Context&, SessionLayer::CommMgr*)+0xef8 at ptime/session/tcp_receiver.cc:392 (libhdbsqlsession.so)
+   7: 0x00007fffa601d68c in ptime::TcpReceiver::runInner(void*)+0x15c at ptime/session/tcp_receiver.cc:503 (libhdbsqlsession.so)
+   8: 0x00007fffa601de98 in non-virtual thunk to ptime::TcpReceiver::run(void*)+0x58 at ptime/session/tcp_receiver.cc:480 (libhdbsqlsession.so)
+   9: 0x00007fff88f7cc20 in TrexThreads::PoolThread::run()+0x1460 at TrexThreads/PoolThread.cpp:437 (libhdbbasement.so)
+  10: 0x00007fff88f6bc48 in TrexThreads::PoolThread::run(Execution::ThreadRC&)+0x28 at TrexThreads/PoolThread.cpp:121 (libhdbbasement.so)
+  11: 0x00007fff848ee51c in Execution::Thread::staticMainImp(Execution::Thread*)+0x64c at Basis/Execution/impl/Thread.cpp:612 (libhdbbasis.so)
+  12: 0x00007fff848f87f8 in Execution::pthreadFunctionWrapper(Execution::Thread*)+0x248 at Basis/Execution/impl/ThreadInterposition.cpp:684 (libhdbbasis.so)
+  13: 0x00007fff84069748 in start_thread+0xf8 (libpthread.so.0)
+exception type information:
+ - 0: public ltt::exception@0x00007fff83f7f340
+[2203172]{236334}[-1/-1] 2025-06-23 11:12:18.417300 e SQLSession       sm_handler.cc(03271) : ===== START OF SESSION DUMP ======================
+[2203172]{236334}[-1/-1] 2025-06-23 11:12:18.417310 e SQLSession       sm_handler.cc(03272) : CHANNEL      : (sockfd:1950, part:211) open_time=6369 ms, exp_size(header)=336, act_size(buffer)=0
+[2203172]{236334}[-1/-1] 2025-06-23 11:12:18.417317 e SQLSession       sm_handler.cc(03273) : ACTION       : name=ExecuteStatement, message_type=EXECUTEDIRECT, stocked_error_code=729, scrollable=0, oabap_stream=0
+[2203172]{236334}[-1/-1] 2025-06-23 11:12:18.417328 e SQLSession       sm_handler.cc(03274) : CLIENT       : janoappprd04[10.2.2.49]:28590(pid=97054), client_library=SQLDBC 2.8.16.1616182488, client_program=dw.sapPEJ_D00
+[2203172]{236334}[-1/-1] 2025-06-23 11:12:18.417334 e SQLSession       sm_handler.cc(03275) : PROTOCOL     : 4.1, internal_session_id=5517753725550219, packet_count(message_id)=0, version_exchanged=1, authenticated=1
+[2203172]{236334}[-1/-1] 2025-06-23 11:12:18.417336 e SQLSession       sm_handler.cc(03276) : DISTRIBUTION : mode=0, version=6
+[2203172]{236334}[-1/-1] 2025-06-23 11:12:18.417338 e SQLSession       sm_handler.cc(03277) : ROUTING      : anchor=236334, primary=236334, own=236334, update_tid=0, A/A_origin_site_type=0, A/A_origin_conn=0, A/A_protocol_version=2
+[2203172]{236334}[-1/-1] 2025-06-23 11:12:18.417342 e SQLSession       sm_handler.cc(03279) : ===== END OF SESSION DUMP ========================
+[2203172]{236334}[-1/-1] 2025-06-23 11:12:18.417387 e SQLSession       sm_handler.cc(01656) : (sockfd:1950, part:211, channel:0x000fec942d315100, event:0x000ffe6dbc2e8140) close channel while sending reply message
+[1775312]{-1}[-1/-1] 2025-06-23 11:12:18.623091 e SQLSession       sm_handler.cc(01313) : (sockfd:1169, part:48, channel:0x000fff986ae85480, event:0x000ffd718775db40) was closed because consecutive requests detected (current state:1)
+[1775312]{-1}[-1/-1] 2025-06-23 11:12:18.623136 e SQLSession       sm_handler.cc(03271) : ===== START OF SESSION DUMP ======================
+[1775312]{-1}[-1/-1] 2025-06-23 11:12:18.623139 e SQLSession       sm_handler.cc(03272) : CHANNEL      : (sockfd:1169, part:48) open_time=4825756564 ms, exp_size(header)=808, act_size(buffer)=288
+[1775312]{-1}[-1/-1] 2025-06-23 11:12:18.623142 e SQLSession       sm_handler.cc(03273) : ACTION       : name=ExecQidItab, message_type=EXECUTE ITAB, stocked_error_code=0, scrollable=0, oabap_stream=1
+[1775312]{-1}[-1/-1] 2025-06-23 11:12:18.623151 e SQLSession       sm_handler.cc(03274) : CLIENT       : janoappprd02[10.2.2.54]:47254(pid=15374), client_library=SQLDBC 2.8.16.1616182488, client_program=ABAP:PEJ
+[1775312]{-1}[-1/-1] 2025-06-23 11:12:18.623155 e SQLSession       sm_handler.cc(03275) : PROTOCOL     : 4.1, internal_session_id=5510686567006614, packet_count(message_id)=6593629, version_exchanged=1, authenticated=1
+[1775312]{-1}[-1/-1] 2025-06-23 11:12:18.623158 e SQLSession       sm_handler.cc(03276) : DISTRIBUTION : mode=2, version=6
+[1775312]{-1}[-1/-1] 2025-06-23 11:12:18.623161 e SQLSession       sm_handler.cc(03277) : ROUTING      : anchor=234587, primary=234587, own=234587, update_tid=0, A/A_origin_site_type=0, A/A_origin_conn=0, A/A_protocol_version=2
+[1775312]{-1}[-1/-1] 2025-06-23 11:12:18.623335 e SQLSession       sm_handler.cc(03321) : (1775312:1169) received msg: 808 / 288
+!0x000fe77c5e050000: >96 81 4b b3 f0 93 13 00|5e 9c 64 00 00 01 00 00|e0 ff 1f 00 01 00 00 00|00 00 00 00 00 00 00 00 || ..K.....^.d.....................
+.0x000fe77c5e050020:  00 01 00 00 00 00 00 00|02 00 01 00 01 44 00 00|00 00 00 00 00 00 00 00|27 00 01 00 00 00 00 00 || .............D..........'.......
+.0x000fe77c5e050040:  b0 00 00 00 b8 ff 1f 00|01 21 ac 00 01 00 00 00|00 00 0f 00 7f 3e 75 c0|00 00 00 00 5c ad d5 2d || .........!...........>u.....\..-
+.0x000fe77c5e050060:  01 00 00 00 69 a1 af fe|00 00 00 00 00 00 00 00|00 00 00 00 00 00 00 00|00 00 00 00 00 00 00 00 || ....i...........................
+.0x000fe77c5e050080:  00 00 00 00 00 00 00 00|00 00 00 00 00 00 00 00|00 00 00 00 00 00 00 00|00 00 00 00 00 00 00 00 || ................................
+.0x000fe77c5e0500a0:  00 00 00 00 00 00 00 00|00 00 00 00 00 00 00 00|00 00 00 00 00 00 00 00|00 00 00 00 00 00 00 00 || ................................
+.0x000fe77c5e0500c0:  00 00 00 00 00 a8 fc bd|8e f4 0f 00 00 00 00 00|00 00 00 00 00 00 00 00|00 00 40 b0 01 00 00 00 || ..........................@.....
+.0x000fe77c5e0500e0:  00 00 00 00 00 00 00 00|00 00 00 00 df 94 f7 07|65 c0 3c 00 7a 0f a7 d2|26 00 02 00 00 00 00 00 || ................e.<.z...&.......
+.0x000fe77c5e050100:  14 00 00 00 f8 fe 1f 00|00 04 0f 00 00 00 00 00|00 00 01 04 00 00 00 00|00 00 00 00 00 00 00 00 || ................................
+[1775312]{-1}[-1/-1] 2025-06-23 11:12:18.623355 e SQLSession       sm_handler.cc(03279) : ===== END OF SESSION DUMP ========================
+[2203673]{-1}[-1/-1] 2025-06-23 11:12:20.520961 e SQLSession       sm_handler.cc(01313) : (sockfd:1228, part:33, channel:0x000ffe32357a3f80, event:0x000fff4175e58b00) was closed because consecutive requests detected (current state:1)
+[2203673]{-1}[-1/-1] 2025-06-23 11:12:20.520994 e SQLSession       sm_handler.cc(03271) : ===== START OF SESSION DUMP ======================
+[2203673]{-1}[-1/-1] 2025-06-23 11:12:20.520997 e SQLSession       sm_handler.cc(03272) : CHANNEL      : (sockfd:1228, part:33) open_time=55574 ms, exp_size(header)=784, act_size(buffer)=288
+[2203673]{-1}[-1/-1] 2025-06-23 11:12:20.521000 e SQLSession       sm_handler.cc(03273) : ACTION       : name=ExecQidItab, message_type=EXECUTE ITAB, stocked_error_code=0, scrollable=0, oabap_stream=1
+[2203673]{-1}[-1/-1] 2025-06-23 11:12:20.521009 e SQLSession       sm_handler.cc(03274) : CLIENT       : janoappprd03[10.2.2.55]:40624(pid=41013), client_library=SQLDBC 2.8.16.1616182488, client_program=ABAP:PEJ
+[2203673]{-1}[-1/-1] 2025-06-23 11:12:20.521014 e SQLSession       sm_handler.cc(03275) : PROTOCOL     : 4.1, internal_session_id=5514490433853802, packet_count(message_id)=144, version_exchanged=1, authenticated=1
+[2203673]{-1}[-1/-1] 2025-06-23 11:12:20.521017 e SQLSession       sm_handler.cc(03276) : DISTRIBUTION : mode=2, version=6
+[2203673]{-1}[-1/-1] 2025-06-23 11:12:20.521021 e SQLSession       sm_handler.cc(03277) : ROUTING      : anchor=235608, primary=235608, own=235608, update_tid=0, A/A_origin_site_type=0, A/A_origin_conn=0, A/A_protocol_version=2
+[2203673]{-1}[-1/-1] 2025-06-23 11:12:20.521164 e SQLSession       sm_handler.cc(03321) : (2203673:1228) received msg: 784 / 288
+!0x000ffc93d8a2e000: >6a 59 6d 5b 66 97 13 00|91 00 00 00 00 01 00 00|e0 ff 1f 00 01 00 00 00|00 00 00 00 00 00 00 00 || jYm[f...........................
+.0x000ffc93d8a2e020:  00 01 00 00 00 00 00 00|02 00 01 00 01 44 00 00|00 00 00 00 00 00 00 00|27 00 01 00 00 00 00 00 || .............D..........'.......
+.0x000ffc93d8a2e040:  b0 00 00 00 b8 ff 1f 00|01 21 ac 00 01 00 00 00|00 00 0f 00 06 20 71 03|01 00 00 00 75 ad d5 2d || .........!........... q.....u..-
+.0x000ffc93d8a2e060:  01 00 00 00 69 a1 af fe|00 00 00 00 00 00 00 00|00 00 00 00 00 00 00 00|00 00 00 00 00 00 00 00 || ....i...........................
+.0x000ffc93d8a2e080:  00 00 00 00 00 00 00 00|00 00 00 00 00 00 00 00|00 00 00 00 00 00 00 00|00 00 00 00 00 00 00 00 || ................................
+.0x000ffc93d8a2e0a0:  00 00 00 00 00 00 00 00|00 00 00 00 00 00 00 00|00 00 00 00 00 00 00 00|00 00 00 00 00 00 00 00 || ................................
+.0x000ffc93d8a2e0c0:  00 00 00 00 00 68 e2 b6|ff ff 0f 00 00 00 00 00|00 00 00 00 00 00 00 00|00 00 40 b0 01 00 00 00 || .....h....................@.....
+.0x000ffc93d8a2e0e0:  00 00 00 00 00 00 00 00|00 00 00 00 d4 65 45 36|65 c0 3c 00 9a 0d 34 0c|26 00 02 00 00 00 00 00 || .............eE6e.<...4.&.......
+.0x000ffc93d8a2e100:  14 00 00 00 f8 fe 1f 00|00 04 0c 00 00 00 00 00|00 00 01 04 00 00 00 00|00 00 00 00 00 00 00 00 || ................................
+[2203673]{-1}[-1/-1] 2025-06-23 11:12:20.521177 e SQLSession       sm_handler.cc(03279) : ===== END OF SESSION DUMP ========================
+[1559110]{235608}[-1/-1] 2025-06-23 11:12:22.186950 e SQLSession       sm_codec_newdb.cc(08861) : failed to encode itab result sets: ERROR [SQL-139] current operation cancelled by request and transaction rolled back: session canceled during fetch at ptime/session/eapi/jdbc/ResultSet.cc:2996
+exception  1: no.71000139  (ptime/session/eapi/jdbc/ResultSet.cc:2996) TID: 1559110
+    session canceled during fetch
+NO exception throw location recorded. Stack generation suppressed.
+exception type information:
+ - 0: public ptime::SQLException@0x00007fffac546e30 SI
+   - 0: public ptime::SQLExceptionBase@0x00007fffac545b98 SI
+     - 0: public Diagnose::UserFacingExceptionBase@0x00007fffac5440e8 SI
+       - 0: public ltt::exception@0x00007fff83f7f340
+[2204645]{235535}[-1/-1] 2025-06-23 11:12:22.371278 e SQLSession       sm_codec_newdb.cc(08861) : failed to encode itab result sets: ERROR [SQL-139] current operation cancelled by request and transaction rolled back: session canceled during fetch at ptime/session/eapi/jdbc/ResultSet.cc:2996
+exception  1: no.71000139  (ptime/session/eapi/jdbc/ResultSet.cc:2996) TID: 2204645
+    session canceled during fetch
+NO exception throw location recorded. Stack generation suppressed.
+exception type information:
+ - 0: public ptime::SQLException@0x00007fffac546e30 SI
+   - 0: public ptime::SQLExceptionBase@0x00007fffac545b98 SI
+     - 0: public Diagnose::UserFacingExceptionBase@0x00007fffac5440e8 SI
+       - 0: public ltt::exception@0x00007fff83f7f340
+[3800351]{229633}[-1/-1] 2025-06-23 11:12:23.291519 e SQLSession       sm_codec_newdb.cc(08861) : failed to encode itab result sets: ERROR [SQL-139] current operation cancelled by request and transaction rolled back: session canceled during fetch at ptime/session/eapi/jdbc/ResultSet.cc:2996
+exception  1: no.71000139  (ptime/session/eapi/jdbc/ResultSet.cc:2996) TID: 3800351
+    session canceled during fetch
+NO exception throw location recorded. Stack generation suppressed.
+exception type information:
+ - 0: public ptime::SQLException@0x00007fffac546e30 SI
+   - 0: public ptime::SQLExceptionBase@0x00007fffac545b98 SI
+     - 0: public Diagnose::UserFacingExceptionBase@0x00007fffac5440e8 SI
+       - 0: public ltt::exception@0x00007fff83f7f340
+[2204114]{-1}[-1/-1] 2025-06-23 11:12:24.031347 e SQLSession       sm_handler.cc(01313) : (sockfd:1258, part:269, channel:0x000ffe5470c63880, event:0x000ffdb8f7755140) was closed because consecutive requests detected (current state:1)
+[2204114]{-1}[-1/-1] 2025-06-23 11:12:24.031391 e SQLSession       sm_handler.cc(03271) : ===== START OF SESSION DUMP ======================
+[2204114]{-1}[-1/-1] 2025-06-23 11:12:24.031394 e SQLSession       sm_handler.cc(03272) : CHANNEL      : (sockfd:1258, part:269) open_time=61632 ms, exp_size(header)=784, act_size(buffer)=288
+[2204114]{-1}[-1/-1] 2025-06-23 11:12:24.031397 e SQLSession       sm_handler.cc(03273) : ACTION       : name=ExecQidItab, message_type=EXECUTE ITAB, stocked_error_code=0, scrollable=0, oabap_stream=1
+[2204114]{-1}[-1/-1] 2025-06-23 11:12:24.031409 e SQLSession       sm_handler.cc(03274) : CLIENT       : janoappprd03[10.2.2.55]:40452(pid=40984), client_library=SQLDBC 2.8.16.1616182488, client_program=ABAP:PEJ
+[2204114]{-1}[-1/-1] 2025-06-23 11:12:24.031414 e SQLSession       sm_handler.cc(03275) : PROTOCOL     : 4.1, internal_session_id=5507961943303210, packet_count(message_id)=193, version_exchanged=1, authenticated=1
+[2204114]{-1}[-1/-1] 2025-06-23 11:12:24.031418 e SQLSession       sm_handler.cc(03276) : DISTRIBUTION : mode=2, version=6
+[2204114]{-1}[-1/-1] 2025-06-23 11:12:24.031420 e SQLSession       sm_handler.cc(03277) : ROUTING      : anchor=235560, primary=235560, own=235560, update_tid=0, A/A_origin_site_type=0, A/A_origin_conn=0, A/A_protocol_version=2
+[2204114]{-1}[-1/-1] 2025-06-23 11:12:24.031584 e SQLSession       sm_handler.cc(03321) : (2204114:1258) received msg: 784 / 288
+!0x000ffc99f20ba000: >2a 24 11 53 76 91 13 00|c2 00 00 00 00 01 00 00|e0 ff 1f 00 01 00 00 00|00 00 00 00 00 00 00 00 || *$.Sv...........................
+.0x000ffc99f20ba020:  00 01 00 00 00 00 00 00|02 00 01 00 01 44 00 00|00 00 00 00 00 00 00 00|27 00 01 00 00 00 00 00 || .............D..........'.......
+.0x000ffc99f20ba040:  b0 00 00 00 b8 ff 1f 00|01 21 ac 00 01 00 00 00|00 00 ff ff 89 20 71 03|01 00 00 00 9a ad d5 2d || .........!........... q........-
+.0x000ffc99f20ba060:  01 00 00 00 69 a1 af fe|00 00 00 00 00 00 00 00|00 00 00 00 00 00 00 00|00 00 00 00 00 00 00 00 || ....i...........................
+.0x000ffc99f20ba080:  00 00 00 00 00 00 00 00|00 00 00 00 00 00 00 00|00 00 00 00 00 00 00 00|00 00 00 00 00 00 00 00 || ................................
+.0x000ffc99f20ba0a0:  00 00 00 00 00 00 00 00|00 00 00 00 00 00 00 00|00 00 00 00 00 00 00 00|00 00 00 00 00 00 00 00 || ................................
+.0x000ffc99f20ba0c0:  00 00 00 00 00 a9 86 ff|ff ff 0f 00 00 00 00 00|00 00 00 00 00 00 00 00|00 00 40 b0 01 00 00 00 || ..........................@.....
+.0x000ffc99f20ba0e0:  00 00 00 00 00 00 00 00|00 00 00 00 c8 bc 53 2d|66 c0 3c 00 b0 10 c2 b6|26 00 02 00 00 00 00 00 || ..............S-f.<.....&.......
+.0x000ffc99f20ba100:  14 00 00 00 f8 fe 1f 00|00 04 0d 00 00 00 00 00|00 00 01 04 00 00 00 00|00 00 00 00 00 00 00 00 || ................................
+[2204114]{-1}[-1/-1] 2025-06-23 11:12:24.031601 e SQLSession       sm_handler.cc(03279) : ===== END OF SESSION DUMP ========================
+[2234475]{235511}[-1/-1] 2025-06-23 11:12:24.390581 e SQLSession       sm_codec_newdb.cc(08861) : failed to encode itab result sets: ERROR [SQL-139] current operation cancelled by request and transaction rolled back: session canceled during fetch at ptime/session/eapi/jdbc/ResultSet.cc:2996
+exception  1: no.71000139  (ptime/session/eapi/jdbc/ResultSet.cc:2996) TID: 2234475
+    session canceled during fetch
+NO exception throw location recorded. Stack generation suppressed.
+exception type information:
+ - 0: public ptime::SQLException@0x00007fffac546e30 SI
+   - 0: public ptime::SQLExceptionBase@0x00007fffac545b98 SI
+     - 0: public Diagnose::UserFacingExceptionBase@0x00007fffac5440e8 SI
+       - 0: public ltt::exception@0x00007fff83f7f340
+[1094164]{235589}[-1/-1] 2025-06-23 11:12:24.712504 e SQLSession       sm_codec_newdb.cc(08861) : failed to encode itab result sets: ERROR [SQL-139] current operation cancelled by request and transaction rolled back: session canceled during fetch at ptime/session/eapi/jdbc/ResultSet.cc:2996
+exception  1: no.71000139  (ptime/session/eapi/jdbc/ResultSet.cc:2996) TID: 1094164
+    session canceled during fetch
+NO exception throw location recorded. Stack generation suppressed.
+exception type information:
+ - 0: public ptime::SQLException@0x00007fffac546e30 SI
+   - 0: public ptime::SQLExceptionBase@0x00007fffac545b98 SI
+     - 0: public Diagnose::UserFacingExceptionBase@0x00007fffac5440e8 SI
+       - 0: public ltt::exception@0x00007fff83f7f340
+[2205287]{234336}[-1/-1] 2025-06-23 11:12:25.548039 e SQLSession       sm_codec_newdb.cc(08861) : failed to encode itab result sets: ERROR [SQL-139] current operation cancelled by request and transaction rolled back: session canceled during fetch at ptime/session/eapi/jdbc/ResultSet.cc:2996
+exception  1: no.71000139  (ptime/session/eapi/jdbc/ResultSet.cc:2996) TID: 2205287
+    session canceled during fetch
+NO exception throw location recorded. Stack generation suppressed.
+exception type information:
+ - 0: public ptime::SQLException@0x00007fffac546e30 SI
+   - 0: public ptime::SQLExceptionBase@0x00007fffac545b98 SI
+     - 0: public Diagnose::UserFacingExceptionBase@0x00007fffac5440e8 SI
+	- 0: public ltt::exception@0x00007fff83f7f340
