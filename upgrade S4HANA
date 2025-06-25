@@ -1,0 +1,204 @@
+1 INTRODUCCIÓN. ANTECEDENTES Y OBJETIVOS
+ALVIC dispone actualmente en su landscape de la solución SAP S/4HANA 1709 con dos sistemas (desarrollo
+y producción). Los sistemas se encuentran instalados sobre base de datos HANA y servidores de aplicación
+SAP con Windows.
+Debido a la finalización del periodo de mantenimiento extendido para S/4HANA 1709 el
+31/Diciembre/2025, el cliente ha de actualizar sus sistemas a la última versión disponible, que actualmente
+es la versión S/4HANA 2023 (con soporte hasta 31/12/2030)
+Así pues, el objeto de esta propuesta es proporcionar a ALVIC los servicios profesionales de consultoría
+SAP necesarios para el upgrade de sus sistemas SAP S/4HANA a la última versión 2023.
+SEIDOR SAP Services
+Propuesta de Servicios
+Página 5 de 13
+2 PLANTEAMIENTOS Y ASPECTOS TÉCNICOS DEL PROYECTO
+2.1 VERSIONES DEL SOFTWARE
+Las versiones de los componentes de los sistemas SAP S/4HANA al inicio del proyecto y tras el proyecto de
+upgrade se resumen en el siguiente cuadro:
+SOFTWARE Versión actual Versión objetivo
+SAP S/4HANA 1709 2023
+Sistema Operativo AppSrv Windows 2016 Windows 2016
+Base de Datos HANA 2.0 SP5 HANA 2.0 SP7 (*)
+Sistema Operativo HANA Linux SLES 12.4 Linux SLES 15.5 (*)
+Nota (*): ): La versión actual de la base de datos es HANA 2.0 SP5 no es suficiente para el upgrade
+a S/4HANA 2023, que requiere HANA 2.0 SP7. La versión de Linux actual es SLES 12.4 no soporta
+HANA 2.0 SP7. Tanto el sistema operativo como la base de datos deberán ser actualizados antes
+del inicio del upgrade de S/4HANA, tal como se detalla en el siguiente apartado.
+En el Upgrade a S/4HANA 2023 se actualizarán los sistemas con el último nivel de Support Packages y kernel
+liberados por SAP al inicio del proyecto.
+2.2 PRERREQUISITOS: ACTUALIZACIÓN DE PLATAFORMA
+Antes de iniciar el proyecto de upgrade de S/4HANA será necesario actualizar las versiones de sistemas
+operativo Linux y base de datos HANA para poder cumplir los prerrequisitos indicados en el apartado
+anterior. Las actuaciones necesarias son las siguientes:
+Actualización del sistema operativo en los servidores HANA a Linux SLES 15 SP5 Esta
+actualización no está incluida en el alcance de esta propuesta y deberá ser realizada por el equipo
+responsable de la plataforma del cliente antes del inicio del upgrade de S/4HANA.
+Actualización a HANA 2.0 SP7 Esta actualización está incluida en el alcance de la propuesta y
+será ejecutada en la primera fase del proyecto, una vez el sistema operativo haya sido actualizado.
+2.3 PROCEDIMIENTO TÉCNICO PARA EL UPGRADE DE S/4HANA
+Para el upgrade técnico de los sistemas S/4HANA se utilizarán las herramientas estándar de SAP. Estas son
+principalmente las siguientes:
+SEIDOR SAP Services
+Propuesta de Servicios
+Página 6 de 13
+Simplification Item Check (SIC): esta herramienta identifica los ajustes funcionales que se deben
+realizar antes de poder efectuar el upgrade técnico propiamente dicho, mediante una serie de
+reports y chequeos que se ejecutan desde el SAPGUI.
+El equipo Basis realiza la descarga y actualización del software necesario para la herramienta SIC
+en la versión y nivel de SPs objetivo del upgrade. Una vez actualizado, el equipo funcional debe
+revisar y corregir todos los puntos indicados para que sea posible iniciar las siguientes fases.
+SAP Maintenance Planner: permite generar el stack de componentes a actualizar durante el
+upgrade y preparar la descarga del software necesario.
+SAP Software Update Manager (SUM): realiza propiamente el upgrade técnico de los sistemas. El
+y se finalizan las actualización y cambios para la nueva versión.
+2.4 ESTRATEGIA TÉCNICA Y SECUENCIA DE OPERACIONES
+Se propone utilizar el sistema S/4HANA de desarrollo como sistema de proyecto, sobre el que se realizará
+el proyecto de upgrade técnico, los ajustes y las validaciones para la nueva versión antes de realizar el
+upgrade en el sistema productivo.
+Upgrade sobre desarrollo
+El sistema de calidad se refrescará como copia homogénea del sistema productivo al inicio del proyecto
+para que sea consistente y disponga de datos suficientes para realizar todas las validaciones necesarias.
+Una vez realizado el upgrade técnico del sistema de calidad por parte del consultor Basis, se entregará al
+equipo funcional y de desarrollo para que realice los ajustes necesarios para la nueva versión y al cliente
+para la validación funcional del correcto funcionamiento del sistema.
+Upgrade productivo
+Una vez finalizada la fase de validaciones en la nueva versión sobre el sistema de calidad, se realizará el
+upgrade del sistema S/4HANA productivo. La fase de se ejecutará en horario laboral y el
+Secuencia de operaciones
+Con esta estrategia, la secuencia de actualización de los sistemas será la siguiente:
+Actualización a HANA 2.0 SP7 en sistema de desarrollo
+Actualización a HANA 2.0 SP7 en sistema productivo
+SEIDOR SAP Services
+Propuesta de Servicios
+Página 7 de 13
+Refresco del sistema S/4HANA de desarrollo como copia homogénea de productivo
+Upgrade técnico del sistema S/4HANA de desarrollo
+Ajustes y validaciones sobre sistema de calidad
+Upgrade del sistema S/4HANA productivo
+Ajustes y validaciones sobre sistema productivo
+Arranque del sistema productivo en la nueva versión de S/4HANA
+2.5 RECURSOS HARDWARE NECESARIOS DURANTE EL PROYECTO DE UPGRADE
+Se necesitará disco temporal (aproximadamente 400 GB)en el servidor de aplicación SAP para poder
+almacenar el software del upgrade y los logs generados durante el proceso técnico de upgrade en los
+diversos sistemas. Este deberá ser provisionado por el cliente para su uso temporal mientras dure el
+proyecto.
+2.6 SAP SOLUTION MANAGER
+Para realizar el upgrade objeto de esta propuesta y para el mantenimiento de los sistemas en la nueva
+versión es imprescindible disponer de un sistema SAP Solution Manager conectado a los sistemas S/4HANA
+que permita extraer los datos necesarios del sistema para enviarlos al portal de soporte SAP y generar los
+stacks necesarios para el upgrade con la utilidad SAP Maintenance Planner.
+2.7 ACTUALIZACIÓN DE SAPGUI EN LOS PUESTOS CLIENTE
+Para poder acceder a los sistemas SAP S/4HANA en la nueva versión será necesario que el cliente actualice
+los SAPGUI en los puestos cliente a la versión a la versión 8.0.
+La nueva versión de SAPGUI es compatible con todas las versiones de sistemas SAP anteriores, por lo que
+es recomendable que el cliente inicie la actualización de los SAPGUI con suficiente antelación al inicio del
+proyecto si los SAPGUI actuales no se encuentran en la versión indicada.
+2.8 AFECTACIÓN A LAS TAREAS DE DESARROLLO Y MANTENIMIENTO DEL SISTEMA
+Mientras se realiza el proyecto de upgrade de los sistemas S/4HANA no se dispondrá de sistema de
+desarrollo. Cualquier actividad de mantenimiento correctivo urgente se tendrá que implementar
+directamente en el sistema productivo y deberá reproducirse manualmente en el sistema de desarrollo en
+la nueva versión, ajustarse y validarse en la nueva versión para mantener la coherencia de entornos y la
+validez de las pruebas.
+Dado el riesgo y esfuerzo adicional que esto representa, es necesario que durante el proyecto no se
+realicen proyectos evolutivos y que se minimicen las tareas de modificación de los sistemas actuales
+SEIDOR SAP Services
+Propuesta de Servicios
+Página 8 de 13
+muy críticas. Es necesario elegir un momento de estabilidad y sin proyectos evolutivos en curso a fin de
+abordar este proyecto.
+Se recomienda minimizar la duración de este proyecto, consiguiendo el compromiso de disponibilidad de
+los recursos internos y/o externos necesarios para la realización de las pruebas y ajustes necesarios, de
+forma que no se dilaten excesivamente en el tiempo.
+3 SOPORTE FUNCIONAL Y DE DESARROLLO DURANTE EL UPGRADE
+Durante el upgrade de los sistemas SAP será necesario realizar los ajustes de desarrollos (SPDD, SPAU,
+desarrollos de cliente) para adaptarlos a la nueva versión y también realizar una validación funcional de
+todos los procesos del sistema, así como de las interfaces con otros sistemas.
+El planteamiento para la realización de los ajustes y validaciones es el siguiente:
+3.1 TAREAS DE AJUSTE DE PROGRAMAS ABAP
+Durante el upgrade de los sistemas SAP será necesario realizar los ajustes de desarrollos:
+- Ajuste de objetos del diccionario durante el upgrade técnico de los sistemas (SPDD)
+- Ajuste de modificaciones al estándar y notas aplicadas (SPAU)
+-
+Estas tareas serán realizadas por un equipo funcional y de programación de Seidor , la imputación será en
+abierto
+3.2 AJUSTES FUNCIONALES Y VALIDACIÓN DEL SISTEMA EN LA NUEVA VERSIÓN
+Durante el upgrade de los sistemas SAP será necesario realizar validaciones funcionales de todos los
+procesos del sistema y los ajustes funcionales y de customizing necesarios para adaptarlos a la nueva
+versión.
+La validación funcional de los procesos de negocio deberá ser realizada por ALVIC. Seidor corregirá los
+errores detectados por los usuarios durante las pruebas de validación. Estas tareas serán realizadas por el
+equipo de Seidor , la imputación será en abierto
+SEIDOR SAP Services
+Propuesta de Servicios
+Página 9 de 13
+3.3 PRUEBAS DE INTERFASES CON OTROS SISTEMAS
+Será necesario que el cliente realice pruebas de las interfases de los sistemas S/4HANA con el resto de los
+sistemas que se integran con él. La validación de interfaces puede realizarse de forma conjunta con las
+validaciones funcionales.
+Cualquier ajuste detectado en las validaciones será realizado por el equipo funcional o de programación de
+Seidor. La imputación será en abierto.
+4 ALCANCE DE LOS SERVICIOS
+4.1 TAREAS A EJECUTAR DURANTE EL PROYECTO
+El proyecto se ejecutará en las siguientes fases y tareas que permitirán a ALVIC la consecución de los
+objetivos planteados:
+1. Preparación del proyecto
+Presentación de los interlocutores del proyecto
+Planificación global del proyecto
+Revisión de prerrequisitos técnicos
+Descarga del software necesario
+2. Actualización de plataforma
+Upgrade a Linux SLES 15.5 en sistema de desarrollo [fuera de alcance]
+Actualización a HANA 2.0 SP7 en sistema de desarrollo
+Upgrade a Linux SLES 15.5 en sistema productivo [no laboral] [fuera de alcance]
+Actualización a HANA 2.0 SP7 en sistema productivo [no laboral]
+3. Upgrade técnico de S/4HANA del sistema de desarrollo
+Refresco del sistema S/4HANA de desarrollo como copia de productivo
+Implantación de notas para actualización de herramientas SIC
+Preparación técnica para el SIC en sistema de desarrollo
+Chequeos y ajustes funcionales del SIC pre-SUM
+Upgrade técnico del S/4HANA de desarrollo
+Ajustes de objetos de diccionario (SPDD) durante upgrade técnico
+Ajuste de parámetros técnicos de SAP para la nueva versión
+4. Ajustes y validación del sistema de desarrollo en la nueva versión
+Ajustes y corrección de desarrollos (SPAU, desarrollos Z
+Ajustes funcionales para la nueva versión
+Pruebas funcionales de los procesos sobre el sistema [fuera de alcance]
+Ajustes de desarrollos y funcionales durante fase de validación
+Export ordenes de transporte con ajustes
+SEIDOR SAP Services
+Propuesta de Servicios
+Página 10 de 13
+5. Upgrade del sistema productivo
+Preparación técnica para el SIC en sistema productivo
+Chequeos y ajustes funcionales del SIC pre-SUM
+Upgrade técnico del sistema S/4HANA productivo
+Ajustes de objetos de diccionario (SPDD) durante upgrade técnico
+[no laboral]
+Ajuste de parámetros técnicos de SAP para la nueva versión [no laboral]
+Transporte de ajustes de desarrollo y funcionales [no laboral]
+Soporte para validaciones sobre el sistema productivo [no laboral]
+Soporte al arranque productivo en la nueva versión
+4.2 TAREAS EXCLUIDAS DEL ALCANCE
+Las siguientes tareas necesarias para el proyecto quedan excluidas del alcance de los servicios incluidos en
+esta propuesta y serán realizadas por el equipo de ALVIC:
+Tareas excluidas del alcance
+Instalación y configuración de servidores y recursos hardware
+Instalación, actualización y ajustes a nivel de sistema operativo
+Configuración y ejecución de backups
+Actualización de software en puestos de trabajo
+Validación de procesos
+4.3 PLANNING DE PROYECTO
+Se estima una duración aproximada del proyecto de aproximadamente 3 meses, que se refleja en el
+siguiente planning orientativo:
+La planificación detallada se elaborará durante la fase inicial de preparación del proyecto, de forma
+conjunta entre el jefe de proyecto de Seidor y el jefe de proyecto designado por ALVIC y se ajustará en
+SEIDOR SAP Services
+Propuesta de Servicios
+Página 11 de 13
+función de la de la disponibilidad del cliente para ejecutar las tareas de validación de los sistemas en la
+nueva versión y la disponibilidad de ventanas para ejecución de las tareas técnicas.
+5 MODALIDAD DE EJECUCIÓN DEL PROYECTO
+Todas las tareas necesarias para este proyecto se ejecutarán de forma remota.
+Para las actuaciones de forma remota, los consultores de Seidor permanecerán en contacto (mediante
+teléfono, correo electrónico y plataformas de colaboración) con las personas designadas por el cliente con
+el fin de garantizar la cooperación necesaria y el seguimiento detallado de las actividades del proyecto por
+ambas partes
